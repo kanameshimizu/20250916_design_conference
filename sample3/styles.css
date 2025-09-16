@@ -1,0 +1,412 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  line-height: 1.276;
+}
+
+/* Section Styles */
+#auto-layout {
+  padding: 80px 0;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding: 0 100px;
+}
+
+/* Header Styles */
+.section-header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 100px;
+}
+
+hgroup {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.section-label {
+  display: inline-block;
+  background-color: #b9ff66;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  padding: 0 7px;
+  border-radius: 7px;
+  white-space: nowrap;
+}
+
+h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.276;
+  color: #000000;
+  max-width: 473px;
+  margin: 0;
+}
+
+/* Team Grid */
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 38px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.team-card {
+  background-color: #ffffff;
+  border: 1px solid #191a23;
+  border-radius: 45px;
+  box-shadow: 0px 5px 0px 0px rgba(25, 26, 35, 1);
+  width: 387px;
+  min-height: 331px;
+  overflow: hidden;
+}
+
+.team-card:nth-child(4),
+.team-card:nth-child(5),
+.team-card:nth-child(6) {
+  min-height: 354px;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 40px 35px;
+  height: 100%;
+}
+
+/* Member Info */
+.member-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-left: -67px;
+}
+
+.profile-section {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding-right: 76px;
+  flex: 1;
+}
+
+.profile-image {
+  width: 105.65px;
+  height: 102.82px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.profile-image img {
+  width: 97.82px;
+  height: 97.82px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  top: 5px;
+  left: 7.82px;
+}
+
+.member-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.276;
+  color: #000000;
+  margin: 0;
+}
+
+.member-details p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.276;
+  color: #000000;
+  margin: 0;
+}
+
+.social-link {
+  width: 34px;
+  height: 34px;
+  background-color: #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.social-link img {
+  width: 17px;
+  height: 17px;
+  filter: invert(1) sepia(1) saturate(0) hue-rotate(0deg) brightness(100%);
+}
+
+/* Divider */
+.divider {
+  width: 317px;
+  height: 1px;
+  background-color: #000000;
+  border: none;
+  margin: 0;
+}
+
+/* Member Description */
+.member-description {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.276;
+  color: #000000;
+  width: 317px;
+  margin: 0;
+}
+
+/* CTA Button */
+.cta-button {
+  background-color: #191a23;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  padding: 20px 35px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 142.83px;
+  text-align: center;
+  align-self: flex-start;
+  transition: background-color 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #2a2b35;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 50px;
+  }
+  
+  .section-header {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  #auto-layout {
+    padding: 60px 0;
+  }
+  
+  .container {
+    padding: 0 20px;
+    gap: 40px;
+  }
+  
+  .section-header {
+    padding: 0 20px;
+  }
+  
+  hgroup {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .section-label {
+    font-size: 32px;
+  }
+  
+  h2 {
+    font-size: 32px;
+    max-width: 100%;
+  }
+  
+  .team-grid {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .team-card {
+    width: 100%;
+    max-width: 387px;
+  }
+  
+  .member-info {
+    margin-left: -40px;
+  }
+  
+  .profile-section {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-label {
+    font-size: 28px;
+  }
+  
+  h2 {
+    font-size: 28px;
+  }
+  
+  .team-member {
+    padding: 30px 25px;
+  }
+  
+  .member-info {
+    margin-left: -30px;
+  }
+  
+  .profile-section {
+    padding-right: 30px;
+  }
+  
+  .divider {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .member-description {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Non-Auto-Layout Section */
+#non-auto-layout {
+  padding: 80px 0;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 1130px;
+}
+
+.non-auto-container {
+  position: relative;
+  width: 100%;
+  height: 970px;
+  padding-top: 80px;
+}
+
+.non-auto-header {
+  position: absolute;
+  top: 0;
+  left: 100px;
+  width: 828px;
+  height: 51px;
+}
+
+.non-auto-header hgroup {
+  display: flex;
+  align-items: flex-start;
+  gap: 155px;
+}
+
+.non-auto-header .section-label {
+  position: absolute;
+  left: 100px;
+  top: 0;
+}
+
+.non-auto-header h2 {
+  position: absolute;
+  left: 255px;
+  top: 0;
+  width: 473px;
+  height: 46px;
+}
+
+/* Non-Auto Team Layout */
+.non-auto-team-layout {
+  position: absolute;
+  top: 115px;
+  left: 100px;
+  width: 1240px;
+  height: 723px;
+}
+
+.non-auto-card {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #191a23;
+  border-radius: 45px;
+  box-shadow: 0px 5px 0px 0px rgba(25, 26, 35, 1);
+  width: 387px;
+  overflow: hidden;
+}
+
+/* Card Positioning - Exact coordinates from Figma */
+.card-1 {
+  left: 1.5px;
+  top: 0;
+  height: 331px;
+}
+
+.card-2 {
+  left: 426.5px;
+  top: 0;
+  height: 330.82px;
+}
+
+.card-3 {
+  left: 851.5px;
+  top: 0;
+  height: 330.82px;
+}
+
+.card-4 {
+  left: 1.5px;
+  top: 369px;
+  height: 354px;
+}
+
+.card-5 {
+  left: 426.5px;
+  top: 369px;
+  height: 354px;
+}
+
+.card-6 {
+  left: 851.5px;
+  top: 369px;
+  height: 354px;
+}
+
+/* Non-Auto Button */
+.non-auto-button {
+  position: absolute;
+  left: 100px;
+  top: 902px;
+}
