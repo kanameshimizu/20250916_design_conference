@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positivus - デジタルマーケティングエージェンシー</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #B9FF66;
+            --dark-green: #a3e654;
+            --text-dark: #191A23;
+            --text-gray: #666;
+            --text-light: #999;
+            --border-light: #eee;
+            --shadow-light: 0 2px 20px rgba(0,0,0,0.08);
+            --shadow-medium: 0 8px 40px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ヘッダー */
+        header {
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: var(--shadow-light);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-dark);
+        }
+
+        .request-quote {
+            background: var(--primary-green);
+            color: var(--text-dark);
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(185, 255, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .request-quote::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .request-quote:hover::before {
+            left: 100%;
+        }
+
+        .request-quote:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(185, 255, 102, 0.4);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(185, 255, 102, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero-cta-container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hero-cta {
+            background: var(--text-dark);
+            color: white;
+            padding: 1.25rem 2.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            background: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .hero-secondary-cta {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+        }
+
+        .hero-secondary-cta:hover {
+            color: var(--primary-green);
+            transform: translateX(5px);
+        }
+
+        .hero-image {
+            text-align: center;
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .hero-illustration {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .hero-illustration:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* アニメーション */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* フローティング要素 */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary-green);
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* パートナー企業 */
+        .partners {
+            background: #f8f8f8;
+            padding: 3rem 0;
+        }
+
+        .partners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .partner-logo {
+            height: 40px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+        }
+
+        /* セクション共通スタイル */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* サービスセクション */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid #000;
+            border-radius: 2rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card.featured {
+            background: #B9FF66;
+        }
+
+        .service-card.dark {
+            background: #191A23;
+            color: white;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: #B9FF66;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            color: #000;
+        }
+
+        .service-card.dark .service-title {
+            background: white;
+        }
+
+        .learn-more {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #000;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .service-card.dark .learn-more {
+            background: #B9FF66;
+            color: #000;
+        }
+
+        .learn-more:hover {
+            background: #333;
+        }
+
+        .service-card.dark .learn-more:hover {
+            background: #a3e654;
+        }
+
+        /* CTAセクション */
+        .cta-section {
+            background: #f8f8f8;
+            padding: 4rem 0;
+        }
+
+        .cta-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .cta-text h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* ケーススタディ */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-study {
+            background: #191A23;
+            color: white;
+            padding: 2rem;
+            border-radius: 2rem;
+            text-align: center;
+        }
+
+        .case-study p {
+            margin-bottom: 1rem;
+        }
+
+        .learn-more-link {
+            color: #B9FF66;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* プロセスセクション */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .process-step {
+            background: #f8f8f8;
+            border: 1px solid #eee;
+            border-radius: 2rem;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:first-child {
+            background: #B9FF66;
+            color: #000;
+        }
+
+        .process-step:hover {
+            background: #B9FF66;
+            color: #000;
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: bold;
+            width: 60px;
+            text-align: center;
+        }
+
+        .step-content {
+            flex: 1;
+            margin-left: 2rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* チームセクション */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 2rem;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #000;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        /* テスティモニアル */
+        .testimonials {
+            background: #191A23;
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial {
+            background: #191A23;
+            border: 1px solid #333;
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #B9FF66;
+        }
+
+        /* お問い合わせフォーム */
+        .contact-section {
+            background: #f8f8f8;
+            padding: 4rem 0;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 2rem;
+            border: 1px solid #eee;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #B9FF66;
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #a3e654;
+        }
+
+        /* フッター */
+        footer {
+            background: #191A23;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #B9FF66;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #B9FF66;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #B9FF66;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 3rem 1rem;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(2rem, 8vw, 2.5rem);
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta-container {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .hero-secondary-cta {
+                justify-content: center;
+            }
+
+            .partners-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .step-content {
+                margin-left: 0;
+            }
+
+            .floating-shape {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .request-quote {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-cta {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon">P</div>
+                Positivus
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#cases">Use Cases</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+            <button class="request-quote">Request a quote</button>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>Navigating the <span class="highlight">digital landscape</span> for success</h1>
+            <p>私たちのデジタルマーケティングエージェンシーは、SEO、PPC、ソーシャルメディアマーケティング、コンテンツ制作などの幅広いサービスを通じて、企業のオンライン成長と成功を支援します。</p>
+            <div class="hero-cta-container">
+                <button class="hero-cta">無料相談を予約</button>
+                <a href="#services" class="hero-secondary-cta">
+                    サービス詳細 →
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-illustration">
+                <!-- 改善されたヒーローイラストレーション -->
+                <svg width="550" height="450" viewBox="0 0 550 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 背景グラデーション -->
+                    <defs>
+                        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#B9FF66;stop-opacity:0.1" />
+                            <stop offset="100%" style="stop-color:#a3e654;stop-opacity:0.3" />
+                        </linearGradient>
+                        <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f8f9fa;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- 背景 -->
+                    <rect width="550" height="450" fill="url(#bgGradient)" rx="25"/>
+                    
+                    <!-- メインイラスト要素 -->
+                    <!-- デスクトップ/ノートPC -->
+                    <rect x="150" y="200" width="250" height="160" rx="12" fill="url(#cardGradient)" stroke="#e0e0e0" stroke-width="2"/>
+                    <rect x="160" y="210" width="230" height="130" rx="8" fill="#191A23"/>
+                    <rect x="170" y="220" width="210" height="80" rx="4" fill="#B9FF66" opacity="0.9"/>
+                    <rect x="180" y="230" width="80" height="8" rx="4" fill="#191A23"/>
+                    <rect x="180" y="250" width="120" height="6" rx="3" fill="#191A23" opacity="0.7"/>
+                    <rect x="180" y="265" width="100" height="6" rx="3" fill="#191A23" opacity="0.7"/>
+                    
+                    <!-- グラフ要素 -->
+                    <rect x="320" y="230" width="50" height="60" rx="4" fill="#ffffff" opacity="0.9"/>
+                    <rect x="325" y="270" width="8" height="15" rx="2" fill="#B9FF66"/>
+                    <rect x="337" y="260" width="8" height="25" rx="2" fill="#B9FF66"/>
+                    <rect x="349" y="250" width="8" height="35" rx="2" fill="#B9FF66"/>
+                    <rect x="361" y="240" width="8" height="45" rx="2" fill="#B9FF66"/>
+                    
+                    <!-- フローティング要素 -->
+                    <circle cx="100" cy="120" r="25" fill="#B9FF66" opacity="0.8"/>
+                    <text x="100" y="128" text-anchor="middle" fill="#191A23" font-size="20" font-weight="bold">SEO</text>
+                    
+                    <circle cx="450" cy="150" r="20" fill="#191A23" opacity="0.9"/>
+                    <text x="450" y="157" text-anchor="middle" fill="#B9FF66" font-size="16" font-weight="bold">PPC</text>
+                    
+                    <rect x="80" y="320" width="60" height="30" rx="15" fill="#ffffff" stroke="#B9FF66" stroke-width="2"/>
+                    <text x="110" y="340" text-anchor="middle" fill="#191A23" font-size="12" font-weight="600">Analytics</text>
+                    
+                    <rect x="420" y="300" width="70" height="30" rx="15" fill="#B9FF66"/>
+                    <text x="455" y="320" text-anchor="middle" fill="#191A23" font-size="12" font-weight="600">Content</text>
+                    
+                    <!-- 矢印とライン -->
+                    <path d="M120 140 L130 200" stroke="#B9FF66" stroke-width="3" fill="none" opacity="0.7"/>
+                    <path d="M430 170 L400 200" stroke="#191A23" stroke-width="3" fill="none" opacity="0.7"/>
+                    <path d="M140 330 L180 280" stroke="#B9FF66" stroke-width="3" fill="none" opacity="0.7"/>
+                    
+                    <!-- 装飾的な点 -->
+                    <circle cx="50" cy="80" r="4" fill="#B9FF66" opacity="0.6"/>
+                    <circle cx="500" cy="100" r="6" fill="#191A23" opacity="0.4"/>
+                    <circle cx="70" cy="380" r="5" fill="#B9FF66" opacity="0.5"/>
+                    <circle cx="480" cy="380" r="4" fill="#191A23" opacity="0.3"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- パートナー企業 -->
+    <section class="partners">
+        <div class="partners-container">
+            <span class="partner-logo">Amazon</span>
+            <span class="partner-logo">Dribbble</span>
+            <span class="partner-logo">HubSpot</span>
+            <span class="partner-logo">Notion</span>
+            <span class="partner-logo">Netflix</span>
+            <span class="partner-logo">Zoom</span>
+        </div>
+    </section>
+
+    <!-- サービスセクション -->
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2 class="section-title">Services</h2>
+            <p class="section-subtitle">At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:</p>
+        </div>
+        <div class="services-grid">
+            <article class="service-card featured">
+                <div class="service-header">
+                    <h3 class="service-title">Search engine optimization</h3>
+                </div>
+                <button class="learn-more">
+                    <span>Learn more</span>
+                    <span>→</span>
+                </button>
+            </article>
+            <article class="service-card">
+                <div class="service-header">
+                    <h3 class="service-title">Pay-per-click advertising</h3>
+                </div>
+                <button class="learn-more">
+                    <span>Learn more</span>
+                    <span>→</span>
+                </button>
+            </article>
+            <article class="service-card dark">
+                <div class="service-header">
+                    <h3 class="service-title">Social Media Marketing</h3>
+                </div>
+                <button class="learn-more">
+                    <span>Learn more</span>
+                    <span>→</span>
+                </button>
+            </article>
+            <article class="service-card">
+                <div class="service-header">
+                    <h3 class="service-title">Email Marketing</h3>
+                </div>
+                <button class="learn-more">
+                    <span>Learn more</span>
+                    <span>→</span>
+                </button>
+            </article>
+            <article class="service-card featured">
+                <div class="service-header">
+                    <h3 class="service-title">Content Creation</h3>
+                </div>
+                <button class="learn-more">
+                    <span>Learn more</span>
+                    <span>→</span>
+                </button>
+            </article>
+            <article class="service-card dark">
+                <div class="service-header">
+                    <h3 class="service-title">Analytics and Tracking</h3>
+                </div>
+                <button class="learn-more">
+                    <span>Learn more</span>
+                    <span>→</span>
+                </button>
+            </article>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <div class="cta-text">
+                <h2>Let's make things happen</h2>
+                <p>Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.</p>
+                <button class="hero-cta">Get your free proposal</button>
+            </div>
+            <div class="cta-image">
+                <svg width="400" height="300" viewBox="0 0 400 300" fill="none">
+                    <rect width="400" height="300" fill="#f0f0f0" rx="20"/>
+                    <text x="200" y="150" text-anchor="middle" fill="#666" font-size="16">CTA Illustration</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ケーススタディ -->
+    <section class="section" id="cases">
+        <div class="section-header">
+            <h2 class="section-title">Case Studies</h2>
+            <p class="section-subtitle">Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies</p>
+        </div>
+        <div class="case-studies-grid">
+            <article class="case-study">
+                <p>For a local restaurant, we implemented a targeted PPC campaign that resulted in a 50% increase in website traffic and a 25% increase in sales.</p>
+                <a href="#" class="learn-more-link">Learn more →</a>
+            </article>
+            <article class="case-study">
+                <p>For a B2B software company, we developed an SEO strategy that resulted in a first page ranking for key keywords and a 200% increase in organic traffic.</p>
+                <a href="#" class="learn-more-link">Learn more →</a>
+            </article>
+            <article class="case-study">
+                <p>For a national retail chain, we created a social media marketing campaign that increased followers by 25% and generated a 20% increase in online sales.</p>
+                <a href="#" class="learn-more-link">Learn more →</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- プロセスセクション -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Our Working Process</h2>
+            <p class="section-subtitle">Step-by-Step Guide to Achieving Your Business Goals</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <span class="step-number">01</span>
+                <div class="step-content">
+                    <h3 class="step-title">Consultation</h3>
+                    <p>During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.</p>
+                </div>
+                <div class="step-toggle">-</div>
+            </div>
+            <div class="process-step">
+                <span class="step-number">02</span>
+                <div class="step-content">
+                    <h3 class="step-title">Research and Strategy Development</h3>
+                </div>
+                <div class="step-toggle">+</div>
+            </div>
+            <div class="process-step">
+                <span class="step-number">03</span>
+                <div class="step-content">
+                    <h3 class="step-title">Implementation</h3>
+                </div>
+                <div class="step-toggle">+</div>
+            </div>
+            <div class="process-step">
+                <span class="step-number">04</span>
+                <div class="step-content">
+                    <h3 class="step-title">Monitoring and Optimization</h3>
+                </div>
+                <div class="step-toggle">+</div>
+            </div>
+            <div class="process-step">
+                <span class="step-number">05</span>
+                <div class="step-content">
+                    <h3 class="step-title">Reporting and Communication</h3>
+                </div>
+                <div class="step-toggle">+</div>
+            </div>
+            <div class="process-step">
+                <span class="step-number">06</span>
+                <div class="step-content">
+                    <h3 class="step-title">Continual Improvement</h3>
+                </div>
+                <div class="step-toggle">+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- チームセクション -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Team</h2>
+            <p class="section-subtitle">Meet the skilled and experienced team behind our successful digital marketing strategies</p>
+        </div>
+        <div class="team-grid">
+            <article class="team-member">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjBmMGYwIiByeD0iNTAiLz48dGV4dCB4PSI1MCIgeT0iNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2NjYiIGZvbnQtc2l6ZT0iMTIiPkpvaG48L3RleHQ+PC9zdmc+" alt="John Smith">
+                <h3 class="member-name">John Smith</h3>
+                <p class="member-role">CEO and Founder</p>
+                <p>10+ years of experience in digital marketing. Expertise in SEO, PPC, and content strategy</p>
+                <a href="#" class="social-link">in</a>
+            </article>
+            <article class="team-member">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjBmMGYwIiByeD0iNTAiLz48dGV4dCB4PSI1MCIgeT0iNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2NjYiIGZvbnQtc2l6ZT0iMTIiPkphbmU8L3RleHQ+PC9zdmc+" alt="Jane Doe">
+                <h3 class="member-name">Jane Doe</h3>
+                <p class="member-role">Director of Operations</p>
+                <p>7+ years of experience in project management and team leadership. Strong organizational and communication skills</p>
+                <a href="#" class="social-link">in</a>
+            </article>
+            <article class="team-member">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjBmMGYwIiByeD0iNTAiLz48dGV4dCB4PSI1MCIgeT0iNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2NjYiIGZvbnQtc2l6ZT0iMTIiPk1pY2hhZWw8L3RleHQ+PC9zdmc+" alt="Michael Brown">
+                <h3 class="member-name">Michael Brown</h3>
+                <p class="member-role">Senior SEO Specialist</p>
+                <p>5+ years of experience in SEO and content creation. Proficient in keyword research and on-page optimization</p>
+                <a href="#" class="social-link">in</a>
+            </article>
+            <article class="team-member">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjBmMGYwIiByeD0iNTAiLz48dGV4dCB4PSI1MCIgeT0iNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2NjYiIGZvbnQtc2l6ZT0iMTIiPkVtaWx5PC90ZXh0Pjwvc3ZnPg==" alt="Emily Johnson">
+                <h3 class="member-name">Emily Johnson</h3>
+                <p class="member-role">PPC Manager</p>
+                <p>3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis</p>
+                <a href="#" class="social-link">in</a>
+            </article>
+            <article class="team-member">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjBmMGYwIiByeD0iNTAiLz48dGV4dCB4PSI1MCIgeT0iNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2NjYiIGZvbnQtc2l6ZT0iMTIiPkJyaWFuPC90ZXh0Pjwvc3ZnPg==" alt="Brian Williams">
+                <h3 class="member-name">Brian Williams</h3>
+                <p class="member-role">Social Media Specialist</p>
+                <p>4+ years of experience in social media marketing. Proficient in creating and scheduling content, analyzing metrics, and building engagement</p>
+                <a href="#" class="social-link">in</a>
+            </article>
+            <article class="team-member">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjBmMGYwIiByeD0iNTAiLz48dGV4dCB4PSI1MCIgeT0iNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2NjYiIGZvbnQtc2l6ZT0iMTIiPlNhcmFoPC90ZXh0Pjwvc3ZnPg==" alt="Sarah Kim">
+                <h3 class="member-name">Sarah Kim</h3>
+                <p class="member-role">Content Creator</p>
+                <p>2+ years of experience in writing and editing. Skilled in creating compelling, SEO-optimized content for various industries</p>
+                <a href="#" class="social-link">in</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- テスティモニアル -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2>Testimonials</h2>
+            <p style="margin-bottom: 3rem; color: #ccc;">Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services</p>
+            <div class="testimonial">
+                <p class="testimonial-text">"We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence."</p>
+                <p class="testimonial-author">John Smith, CEO of ABC Company</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせセクション -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>Connect with Us: Let's Discuss Your Digital Marketing Needs</p>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message*</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Positivus</h3>
+                <p>Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="#">Search Engine Optimization</a>
+                <a href="#">Pay-per-click Advertising</a>
+                <a href="#">Social Media Marketing</a>
+                <a href="#">Email Marketing</a>
+                <a href="#">Content Creation</a>
+                <a href="#">Analytics and Tracking</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@positivus.com</p>
+                <p>Phone: 555-567-8901</p>
+                <p>Address: 1234 Main St<br>Moonstone City, Stardust State 12345</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#">f</a>
+                    <a href="#">t</a>
+                    <a href="#">in</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Positivus. All Rights Reserved. | Privacy Policy</p>
+        </div>
+    </footer>
+
+    <script>
+        // ヘッダーのスクロール効果
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // インタラクション効果
+        document.addEventListener('DOMContentLoaded', () => {
+            // ボタンのリップル効果
+            const buttons = document.querySelectorAll('button, .hero-cta, .request-quote');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s ease-out;
+                        pointer-events: none;
+                    `;
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // 要素の表示アニメーション
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // 監視する要素を追加
+            document.querySelectorAll('.section, .service-card, .team-member').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // リップルアニメーションのCSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
