@@ -12,52 +12,81 @@ body {
   line-height: 1.276;
 }
 
-/* Section Styles */
+/* Auto Layout Section */
 #auto-layout {
-  padding: 80px 0;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
+  padding: 80px 100px;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   gap: 64px;
-  padding: 0 100px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Layout Explanation Styles */
+.layout-explanation {
+  background-color: #e8f5e8;
+  padding: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.layout-explanation h3 {
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.layout-explanation p {
+  font-size: 14px;
+  margin: 0;
+  color: #555;
 }
 
 /* Header Styles */
 .section-header {
   display: flex;
   justify-content: flex-start;
-  padding: 0 100px;
 }
 
-hgroup {
+.section-header hgroup {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
   gap: 40px;
+  width: fit-content;
+  height: fit-content;
 }
 
 .section-label {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  padding: 0px 7px;
   background-color: #b9ff66;
-  color: #000000;
-  font-size: 40px;
-  font-weight: 500;
-  padding: 0 7px;
   border-radius: 7px;
-  white-space: nowrap;
+  width: fit-content;
+  height: fit-content;
 }
 
-h2 {
+.section-label-text {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
   font-size: 40px;
   line-height: 1.276;
   color: #000000;
-  max-width: 473px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.section-description {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.276;
+  color: #000000;
+  width: 473px;
+  height: fit-content;
   margin: 0;
 }
 
@@ -79,7 +108,7 @@ h2 {
   box-shadow: 0px 5px 0px 0px rgba(25, 26, 35, 1);
   width: 387px;
   min-height: 331px;
-  overflow: hidden;
+  flex: 0 1 387px;
 }
 
 .team-card:nth-child(4),
@@ -93,23 +122,30 @@ h2 {
   flex-direction: column;
   gap: 28px;
   padding: 40px 35px;
+  width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  justify-content: flex-start;
 }
 
 /* Member Info */
 .member-info {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-left: -67px;
+  flex-direction: row;
+  align-self: stretch;
+  width: 100%;
+  height: fit-content;
+  position: relative;
 }
 
 .profile-section {
   display: flex;
+  flex-direction: row;
   align-items: flex-end;
   gap: 20px;
   padding-right: 76px;
-  flex: 1;
+  width: 100%;
+  height: fit-content;
 }
 
 .profile-image {
@@ -119,55 +155,137 @@ h2 {
   flex-shrink: 0;
 }
 
-.profile-image img {
-  width: 97.82px;
-  height: 97.82px;
-  border-radius: 50%;
-  object-fit: cover;
+.profile-image::before {
+  content: '';
   position: absolute;
   top: 5px;
   left: 7.82px;
+  width: 97.82px;
+  height: 97.82px;
+  background-color: #b9ff66;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.profile-image img {
+  width: 107px;
+  height: 161px;
+  position: absolute;
+  top: -14px;
+  left: -0.18px;
+  object-fit: cover;
+  z-index: 1;
+  clip-path: circle(48.91px at 53.5px 75.5px);
+}
+
+/* Different image positioning for each card */
+.team-card:nth-child(2) .profile-image img {
+  width: 188px;
+  height: 125px;
+  top: -6px;
+  left: -46px;
+  clip-path: circle(48.91px at 97px 62.5px);
+}
+
+.team-card:nth-child(3) .profile-image img {
+  width: 208px;
+  height: 139px;
+  top: 0px;
+  left: -79px;
+  clip-path: circle(48.91px at 132px 69.5px);
+}
+
+.team-card:nth-child(4) .profile-image img {
+  width: 284px;
+  height: 426px;
+  top: -158px;
+  left: -83px;
+  clip-path: circle(48.91px at 142px 213px);
+}
+
+.team-card:nth-child(5) .profile-image img {
+  width: 165px;
+  height: 247px;
+  top: -45px;
+  left: -31px;
+  clip-path: circle(48.91px at 82.5px 123.5px);
+}
+
+.team-card:nth-child(6) .profile-image img {
+  width: 105px;
+  height: 105px;
+  top: 0px;
+  left: 3.82px;
+  clip-path: circle(48.91px at 52.5px 52.5px);
 }
 
 .member-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  width: 148px;
+  height: 49px;
+  position: relative;
+  flex-shrink: 0;
 }
 
-h4 {
+.member-name {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.276;
   color: #000000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 26px;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.member-details p {
+.member-title {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.276;
   color: #000000;
+  position: absolute;
+  top: 26px;
+  left: 0;
+  width: 148px;
+  height: 23px;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .social-link {
   width: 34px;
   height: 34px;
-  background-color: #000000;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
   flex-shrink: 0;
 }
 
-.social-link img {
+.social-circle {
+  width: 34px;
+  height: 34px;
+  background-color: #000000;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.social-icon {
   width: 17px;
   height: 17px;
-  filter: invert(1) sepia(1) saturate(0) hue-rotate(0deg) brightness(100%);
+  position: absolute;
+  top: 8px;
+  left: 9px;
+  filter: brightness(0) saturate(100%) invert(67%) sepia(52%) saturate(6057%) hue-rotate(66deg) brightness(104%) contrast(101%);
 }
 
 /* Divider */
@@ -177,6 +295,7 @@ h4 {
   background-color: #000000;
   border: none;
   margin: 0;
+  flex-shrink: 0;
 }
 
 /* Member Description */
@@ -187,174 +306,81 @@ h4 {
   line-height: 1.276;
   color: #000000;
   width: 317px;
+  height: fit-content;
   margin: 0;
+  flex-shrink: 0;
 }
 
 /* CTA Button */
 .cta-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 35px;
   background-color: #191a23;
-  color: #ffffff;
+  border-radius: 14px;
+  width: 300px;
+  height: fit-content;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.cta-button-text {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 1.4;
-  padding: 20px 35px;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  width: 142.83px;
   text-align: center;
-  align-self: flex-start;
-  transition: background-color 0.2s ease;
-}
-
-.cta-button:hover {
-  background-color: #2a2b35;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .container {
-    padding: 0 50px;
-  }
-  
-  .section-header {
-    padding: 0 50px;
-  }
-}
-
-@media (max-width: 768px) {
-  #auto-layout {
-    padding: 60px 0;
-  }
-  
-  .container {
-    padding: 0 20px;
-    gap: 40px;
-  }
-  
-  .section-header {
-    padding: 0 20px;
-  }
-  
-  hgroup {
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  
-  .section-label {
-    font-size: 32px;
-  }
-  
-  h2 {
-    font-size: 32px;
-    max-width: 100%;
-  }
-  
-  .team-grid {
-    gap: 20px;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .team-card {
-    width: 100%;
-    max-width: 387px;
-  }
-  
-  .member-info {
-    margin-left: -40px;
-  }
-  
-  .profile-section {
-    padding-right: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-label {
-    font-size: 28px;
-  }
-  
-  h2 {
-    font-size: 28px;
-  }
-  
-  .team-member {
-    padding: 30px 25px;
-  }
-  
-  .member-info {
-    margin-left: -30px;
-  }
-  
-  .profile-section {
-    padding-right: 30px;
-  }
-  
-  .divider {
-    width: 100%;
-    max-width: 280px;
-  }
-  
-  .member-description {
-    width: 100%;
-    max-width: 280px;
-  }
+  color: #ffffff;
+  width: fit-content;
+  height: fit-content;
 }
 
 /* Non-Auto-Layout Section */
 #non-auto-layout {
-  padding: 80px 0;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  min-height: 1130px;
+  height: 1100px;
+  position: relative;
+  margin-top: 40px;
+  padding: 80px 100px;
 }
 
 .non-auto-container {
   position: relative;
-  width: 100%;
-  height: 970px;
-  padding-top: 80px;
+  height: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 .non-auto-header {
   position: absolute;
-  top: 0;
-  left: 100px;
-  width: 828px;
-  height: 51px;
-}
-
-.non-auto-header hgroup {
-  display: flex;
-  align-items: flex-start;
-  gap: 155px;
+  top: 100px;
+  left: 0;
 }
 
 .non-auto-header .section-label {
   position: absolute;
-  left: 100px;
   top: 0;
+  left: 0;
 }
 
-.non-auto-header h2 {
+.non-auto-header .section-description {
   position: absolute;
-  left: 255px;
   top: 0;
+  left: 155px;
   width: 473px;
   height: 46px;
 }
 
 /* Non-Auto Team Layout */
 .non-auto-team-layout {
-  position: absolute;
-  top: 115px;
-  left: 100px;
   width: 1240px;
   height: 723px;
+  position: absolute;
+  top: 200px;
+  left: 0;
 }
 
 .non-auto-card {
@@ -364,7 +390,17 @@ h4 {
   border-radius: 45px;
   box-shadow: 0px 5px 0px 0px rgba(25, 26, 35, 1);
   width: 387px;
-  overflow: hidden;
+}
+
+.non-auto-card .team-member {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 40px 35px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  justify-content: flex-start;
 }
 
 /* Card Positioning - Exact coordinates from Figma */
@@ -407,6 +443,77 @@ h4 {
 /* Non-Auto Button */
 .non-auto-button {
   position: absolute;
-  left: 100px;
-  top: 902px;
+  left: 0;
+  top: 950px;
+}
+
+/* Specific member details for different cards */
+.team-card:nth-child(2) .member-details {
+  width: 194.18px;
+  height: 49.18px;
+}
+
+.team-card:nth-child(2) .member-name {
+  width: 90px;
+}
+
+.team-card:nth-child(2) .member-title {
+  top: 26.18px;
+  width: 194px;
+}
+
+.team-card:nth-child(3) .member-details {
+  width: 183px;
+  height: 49px;
+}
+
+.team-card:nth-child(3) .member-name {
+  width: 141px;
+}
+
+.team-card:nth-child(3) .member-title {
+  width: 183px;
+}
+
+.team-card:nth-child(4) .member-details {
+  width: 140px;
+  height: 49px;
+}
+
+.team-card:nth-child(4) .member-name {
+  width: 140px;
+}
+
+.team-card:nth-child(4) .member-title {
+  width: 114px;
+}
+
+.team-card:nth-child(5) .member-details {
+  width: 194.18px;
+  height: 72.18px;
+}
+
+.team-card:nth-child(5) .member-name {
+  width: 133px;
+}
+
+.team-card:nth-child(5) .member-title {
+  top: 26.18px;
+  width: 194px;
+  height: 46px;
+}
+
+.team-card:nth-child(6) .member-details {
+  width: 194.18px;
+  height: 49.18px;
+}
+
+.team-card:nth-child(6) .member-name {
+  width: 95px;
+}
+
+
+.team-card:nth-child(6) .member-title {
+  top: 26.18px;
+  width: 194px;
 }
