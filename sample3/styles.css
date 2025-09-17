@@ -220,44 +220,25 @@ body {
 }
 
 .member-details {
-  width: 148px;
-  height: 49px;
-  position: relative;
   flex-shrink: 0;
 }
 
-.member-name {
+.member-details h4 {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.276;
   color: #000000;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 110px;
-  height: 26px;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin: 0 0 5px 0;
 }
 
-.member-title {
+.member-details p {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.276;
   color: #000000;
-  position: absolute;
-  top: 26px;
-  left: 0;
-  width: 148px;
-  height: 23px;
   margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .social-link {
@@ -447,73 +428,3 @@ body {
   top: 950px;
 }
 
-/* Specific member details for different cards */
-.team-card:nth-child(2) .member-details {
-  width: 194.18px;
-  height: 49.18px;
-}
-
-.team-card:nth-child(2) .member-name {
-  width: 90px;
-}
-
-.team-card:nth-child(2) .member-title {
-  top: 26.18px;
-  width: 194px;
-}
-
-.team-card:nth-child(3) .member-details {
-  width: 183px;
-  height: 49px;
-}
-
-.team-card:nth-child(3) .member-name {
-  width: 141px;
-}
-
-.team-card:nth-child(3) .member-title {
-  width: 183px;
-}
-
-.team-card:nth-child(4) .member-details {
-  width: 140px;
-  height: 49px;
-}
-
-.team-card:nth-child(4) .member-name {
-  width: 140px;
-}
-
-.team-card:nth-child(4) .member-title {
-  width: 114px;
-}
-
-.team-card:nth-child(5) .member-details {
-  width: 194.18px;
-  height: 72.18px;
-}
-
-.team-card:nth-child(5) .member-name {
-  width: 133px;
-}
-
-.team-card:nth-child(5) .member-title {
-  top: 26.18px;
-  width: 194px;
-  height: 46px;
-}
-
-.team-card:nth-child(6) .member-details {
-  width: 194.18px;
-  height: 49.18px;
-}
-
-.team-card:nth-child(6) .member-name {
-  width: 95px;
-}
-
-
-.team-card:nth-child(6) .member-title {
-  top: 26.18px;
-  width: 194px;
-}
